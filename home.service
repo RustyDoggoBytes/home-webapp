@@ -1,0 +1,16 @@
+[Unit]
+Description = home-webapp
+
+[Service]
+Type           = simple
+User           = root
+Group          = root
+LimitNOFILE    = 4096
+Restart        = always
+RestartSec     = 5s
+StandardOutput = append:/root/logs/home-webapp/errors.log
+StandardError  = append:/root/logs/home-webapp/errors.log
+ExecStart      = /root/apps/main
+
+[Install]
+WantedBy = multi-user.target
