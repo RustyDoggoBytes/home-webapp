@@ -1,0 +1,44 @@
+package main
+
+templ layout(contents templ.Component) {
+	<!DOCTYPE html>
+	<html lang="en">
+		<head>
+			<meta charset="utf-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1"/>
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"/>
+			<script src="https://unpkg.com/htmx.org@1.9.8" integrity="sha384-rgjA7mptc2ETQqXoYC3/zJvkU7K/aP44Y+z7xQuJiVnB/422P/Ak+F/AqFR7E4Wr" crossorigin="anonymous"></script>
+			<title>RustyDoggoBytes</title>
+		</head>
+		<body>
+			<nav class="container-fluid">
+				<ul>
+					<li><strong>RustyDoggoBytes</strong></li>
+				</ul>
+			</nav>
+			<main class="container">
+				@contents
+			</main>
+		</body>
+	</html>
+}
+
+templ index() {
+	<p>A developer trying to do things...</p>
+	<h1>Projects</h1>
+	<article>
+		<h3>GymBuddy</h3>
+		<p>a simple app for you to track your gym workouts...</p>
+		<a href="#">View app</a>
+	</article>
+	<article>
+		<h3>TibiaBuddy</h3>
+		<p>a simple app for you to track your Tibia buddies...</p>
+		<a href="#">View app</a>
+	</article>
+	<article>
+		<h3>FamBuddy</h3>
+		<p>a simple app for you to track your family activities...</p>
+		<a href="#">View app</a>
+	</article>
+}
