@@ -10,7 +10,7 @@ Restart        = always
 RestartSec     = 5s
 StandardOutput = append:/root/logs/home-webapp/errors.log
 StandardError  = append:/root/logs/home-webapp/errors.log
-ExecStart      = /root/apps/main
+ExecStart      = /root/apps/home
 
 [Install]
 WantedBy = multi-user.target
