@@ -16,5 +16,5 @@ func main() {
 		return component.Render(c.Request().Context(), c.Response())
 	})
 
-	e.Logger.Fatal("127.0.0.1:1323")
+	e.Logger.Fatal(e.Start("127.0.0.1:1323"))
 }
