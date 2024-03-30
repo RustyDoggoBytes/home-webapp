@@ -3,10 +3,8 @@ package main
 import (
 	"embed"
 	"io/fs"
+	"log"
 	"net/http"
-
-	"github.com/labstack/echo/v4"
-	"github.com/labstack/echo/v4/middleware"
 )
 
 //go:embed static/*
@@ -22,18 +20,16 @@ func getFileSystem() http.FileSystem {
 }
 
 func main() {
-	e := echo.New()
-
-	e.Use(middleware.Recover())
-	e.Use(middleware.Logger())
-
-	assetHandler := http.FileServer(getFileSystem())
-
-	e.GET("/static/*", echo.WrapHandler(http.StripPrefix("/static/", assetHandler)))
-	e.GET("/", func(c echo.Context) error {
-		component := layout(index())
-		return component.Render(c.Request().Context(), c.Response())
+	mux := http.NewServeMux()
+	mux.HandleFunc("/static/", func(w http.ResponseWriter, r *http.Request) {
+		http.StripPrefix("/static/", http.FileServer(getFileSystem())).ServeHTTP(w, r)
 	})
 
-	e.Logger.Fatal(e.Start("127.0.0.1:1323"))
+	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		component := layout(index())
+		component.Render(r.Context(), w)
+	})
+
+	log.Println("Server started at :1323")
+	http.ListenAndServe("127.0.0.1:1323", mux)
 }

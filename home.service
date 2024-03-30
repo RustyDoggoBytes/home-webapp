@@ -3,14 +3,14 @@ Description = home-webapp
 
 [Service]
 Type           = simple
-User           = root
-Group          = root
+User           = rustydoggobytes
+Group          = rustydoggobytes
 LimitNOFILE    = 4096
 Restart        = always
 RestartSec     = 5s
-StandardOutput = append:/root/logs/home-webapp/errors.log
-StandardError  = append:/root/logs/home-webapp/errors.log
-ExecStart      = /root/apps/home
+StandardOutput = append:/home/rustydoggobytes/logs/home.log
+StandardError  = append:/home/rustydoggobytes/logs/home.log
+ExecStart      = /home/rustydoggobytes/apps/home
 
 [Install]
 WantedBy = multi-user.target
