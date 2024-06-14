@@ -12,4 +12,4 @@ FROM scratch
 WORKDIR /app
 COPY --from=build /app/myapp .
 
-ENTRYPOINT ["/app/myapp", "1323"]
+ENTRYPOINT ["/app/myapp"]
