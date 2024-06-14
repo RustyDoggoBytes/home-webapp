@@ -30,6 +30,6 @@ func main() {
 		component.Render(r.Context(), w)
 	})
 
-	log.Println("Server started at :8081")
-	http.ListenAndServe("127.0.0.1:8081", mux)
+	log.Println("Server started at :8080")
+	http.ListenAndServe(":8080", mux)
 }
